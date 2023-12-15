@@ -6,7 +6,7 @@ class UserService {
         return users;
     }
 
-    async getOne(id) {
+    async getUserById(id) {
         if (!id) {
             throw new Error('не указан ID');
         }

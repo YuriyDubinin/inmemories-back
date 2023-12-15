@@ -10,9 +10,9 @@ class UserController {
         }
     }
 
-    async getOne(req, res) {
+    async getUserById(req, res) {
         try {
-            const user = await UserService.getOne(req.params.id);
+            const user = await UserService.getUserById(req.params.id);
             return res.json(user);
         } catch (e) {
             res.status(500).json(e);
