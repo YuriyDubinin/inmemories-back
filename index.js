@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use('/', require('./app/routes/main'));
+app.use('/', require('./app/routers/user.router'));
 
 async function start() {
     try {
