@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -8,7 +9,11 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use('/', require('./app/routers/user.router'));
+const corsOptions = {
+    origin: process.env.ORIGIN,
+};
+
+app.use('/', cors(corsOptions), require('./app/routers/user.router'));
 
 async function start() {
     try {

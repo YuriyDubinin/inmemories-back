@@ -1,10 +1,10 @@
 const UserModal = require('../modals/user.modal');
 
 class UserService {
-    // async getAll() {
-    //     const users = await UserModal.find();
-    //     return users;
-    // }
+    async getAll() {
+        const users = await UserModal.find();
+        return users;
+    }
 
     // async getUserById(id) {
     //     if (!id) {
