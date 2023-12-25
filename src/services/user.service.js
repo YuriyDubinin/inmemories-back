@@ -25,8 +25,16 @@ class UserService {
 
     async createUser(post, picture) {
         const fileName = fileService.saveFile(picture);
-        const createdPost = await PostModal.create({...post, picture: fileName});
+        const createdPost = await UserModal.create({...post, picture: fileName});
         return createdPost;
+    }
+
+    async deleteUserByKey(key) {
+        if (!key) {
+            throw new Error('key not specified');
+        }
+        const post = await UserModal.findOneAndDelete(key);
+        return post;
     }
 }
 
