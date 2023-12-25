@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const delegateCorsOptions = require('./app/helpers/delegateCorsOptions');
+const delegateCorsOptions = require('./src/helpers/delegateCorsOptions');
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use('/', cors(delegateCorsOptions), require('./app/routers/user.router'));
+app.use('/', cors(delegateCorsOptions), require('./src/routers/user.router'));
 
 async function start() {
     try {

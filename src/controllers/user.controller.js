@@ -27,6 +27,15 @@ class UserController {
             res.status(500).json(e);
         }
     }
+
+    async createUser(req, res) {
+        try {
+            const post = await UserService.createUser(req.body, req.files.picture);
+            res.json(post);
+        } catch (e) {
+            res.status(500).json(e);
+        }
+    }
 }
 
 module.exports = new UserController();

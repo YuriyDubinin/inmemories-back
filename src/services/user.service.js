@@ -1,4 +1,5 @@
 const UserModal = require('../modals/user.modal');
+const fileService = require('../helpers/fileService');
 
 class UserService {
     async getAll() {
@@ -20,6 +21,12 @@ class UserService {
         }
         const user = await UserModal.find({key});
         return user;
+    }
+
+    async createUser(post, picture) {
+        const fileName = fileService.saveFile(picture);
+        const createdPost = await PostModal.create({...post, picture: fileName});
+        return createdPost;
     }
 }
 
