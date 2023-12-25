@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const delegateCorsOptions = require('./src/helpers/delegateCorsOptions');
+const router = require('./src/routers/user.router');
 
 dotenv.config();
 
@@ -10,7 +11,8 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use('/', cors(delegateCorsOptions), require('./src/routers/user.router'));
+app.use(express.json());
+app.use('/', cors(delegateCorsOptions), router);
 
 async function start() {
     try {

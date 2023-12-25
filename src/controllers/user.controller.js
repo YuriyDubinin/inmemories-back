@@ -37,12 +37,10 @@ class UserController {
         }
     }
 
-    async createUser(req, res) {
-        console.log('req.body: ', req.body);
+    async create(req, res) {
         try {
-            const user = await UserService.createUser(req.body);
-
-            res.json(user);
+            const post = await PostService.create(req.body, req.files.picture);
+            res.json(post);
         } catch (e) {
             res.status(500).json(e);
         }

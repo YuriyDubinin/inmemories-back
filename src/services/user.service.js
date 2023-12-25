@@ -1,4 +1,4 @@
-const UserModal = require('../modals/user.modal');
+const UserModal = require('../models/user.model');
 const fileService = require('../helpers/fileService');
 
 class UserService {
@@ -33,11 +33,11 @@ class UserService {
         return user;
     }
 
-    async createUser(post) {
-        console.log('post: ', post);
-        const createdUser = await UserModal.create(post);
-
-        return createdUser;
+    async create(post, picture) {
+        console.log(picture);
+        const fileName = fileService.saveFile(picture);
+        const createdPost = await PostModal.create({...post, picture: fileName});
+        return createdPost;
     }
 }
 
