@@ -10,15 +10,6 @@ class UserController {
         }
     }
 
-    // async getUserById(req, res) {
-    //     try {
-    //         const user = await UserService.getUserById(req.params.id);
-    //         return res.json(user);
-    //     } catch (e) {
-    //         res.status(500).json(e);
-    //     }
-    // }
-
     async getUserByKey(req, res) {
         try {
             const user = await UserService.getUserByKey(req.params.key);
@@ -39,8 +30,8 @@ class UserController {
 
     async create(req, res) {
         try {
-            const post = await PostService.create(req.body, req.files.picture);
-            res.json(post);
+            const user = await UserService.create(req.body);
+            res.json(user);
         } catch (e) {
             res.status(500).json(e);
         }

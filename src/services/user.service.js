@@ -7,14 +7,6 @@ class UserService {
         return users;
     }
 
-    // async getUserById(id) {
-    //     if (!id) {
-    //         throw new Error('не указан ID');
-    //     }
-    //     const user = await UserModal.findById(id);
-    //     return user;
-    // }
-
     async getUserByKey(key) {
         if (!key) {
             throw new Error('key not specified');
@@ -33,11 +25,9 @@ class UserService {
         return user;
     }
 
-    async create(post, picture) {
-        console.log(picture);
-        const fileName = fileService.saveFile(picture);
-        const createdPost = await PostModal.create({...post, picture: fileName});
-        return createdPost;
+    async create(user) {
+        const createdUser = await UserModal.create(user);
+        return createdUser;
     }
 }
 
