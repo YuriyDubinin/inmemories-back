@@ -2,7 +2,7 @@ const UserModal = require('../modals/user.modal');
 const fileService = require('../helpers/fileService');
 
 class UserService {
-    async getAll() {
+    async getAllUsers() {
         const users = await UserModal.find();
         return users;
     }
@@ -23,14 +23,21 @@ class UserService {
         return user;
     }
 
-    async deleteById(id) {
+    async deleteUserById(id) {
         if (!id) {
             throw new Error('ID not specified');
         }
 
-        const post = await UserModal.findByIdAndDelete(id);
+        const user = await UserModal.findByIdAndDelete(id);
 
-        return post;
+        return user;
+    }
+
+    async createUser(post) {
+        console.log('post: ', post);
+        const createdUser = await UserModal.create(post);
+
+        return createdUser;
     }
 }
 

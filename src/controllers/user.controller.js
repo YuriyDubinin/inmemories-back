@@ -1,9 +1,9 @@
 const UserService = require('../services/user.service');
 
 class UserController {
-    async getAll(req, res) {
+    async getAllUsers(req, res) {
         try {
-            const users = await UserService.getAll();
+            const users = await UserService.getAllUsers();
             return res.json(users);
         } catch (e) {
             res.status(500).json(e);
@@ -28,10 +28,21 @@ class UserController {
         }
     }
 
-    async deleteById(req, res) {
+    async deleteUserById(req, res) {
         try {
-            const post = await UserService.deleteById(req.params.id);
+            const post = await UserService.deleteUserById(req.params.id);
             return res.json(post);
+        } catch (e) {
+            res.status(500).json(e);
+        }
+    }
+
+    async createUser(req, res) {
+        console.log('req.body: ', req.body);
+        try {
+            const user = await UserService.createUser(req.body);
+
+            res.json(user);
         } catch (e) {
             res.status(500).json(e);
         }
