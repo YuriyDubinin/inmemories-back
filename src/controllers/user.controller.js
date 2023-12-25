@@ -28,19 +28,9 @@ class UserController {
         }
     }
 
-    async createUser(req, res) {
+    async deleteById(req, res) {
         try {
-            // const post = await UserService.createUser(req.body, req.files.picture);
-            const post = await UserService.createUser(req.body);
-            res.json(post);
-        } catch (e) {
-            res.status(500).json(e);
-        }
-    }
-
-    async deleteUserByKey(req, res) {
-        try {
-            const post = await UserService.deleteUser(req.params.key);
+            const post = await UserService.deleteById(req.params.id);
             return res.json(post);
         } catch (e) {
             res.status(500).json(e);
